@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * Implements hook_menu_link_defaults().
+ */
+function hello_menu_link_defaults() {
+	// Ajoute des liens de menu.
+	$links['hello.hello'] = array(  // Nom machine de l'élément de menu.
+		'link_title'  => 'Hello Page',
+		'description' => "Hello test page.",
+		'menu_name'   => 'main',
+		'route_name'  => 'hello.hello', // OU link_path avec chemin interne
+		'weight'      => '1',
+	);
+	$links['hello.form'] = array(
+		'link_title'  => 'Hello Form',
+		'description' => "Hello test form.",
+		'menu_name'   => 'main',
+		'route_name'  => 'hello.form',
+		'weight'      => '2',
+	);
+	$links['hello.access'] = array(
+		'link_title'  => 'Hello Access',
+		'description' => "Hello test access.",
+		'menu_name'   => 'main',
+		'route_name'  => 'hello.access',
+		'weight'      => '3',
+	);
+	$links['hello.admin.form'] = array(
+		'link_title'  => 'Hello Admin Form',
+		'description' => "Administzr hello module.",
+		'parent'      => 'system.admin.config.system',
+		'route_name'  => 'hello.admin_form',
+	);
+	
+	return $links;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function hello_permission() {
+   return array(
+    'access hello' => array(
+      'title' => t('Access Hello'), 
+      'description' => t('Access Hello Pages'),
+    ),
+  );
+}

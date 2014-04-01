@@ -1,0 +1,27 @@
+hello.hello: 
+  path: '/hello' 
+  defaults: 
+    _content: '\Drupal\hello\Controller\HelloController::content'
+    argument1: 'ARGUMENT'
+  requirements: 
+    _permission: 'administer content'
+hello.access: 
+  path: '/hello-access' 
+  defaults: 
+    _content: '\Drupal\hello\Controller\HelloAccessController::content'
+  requirements: 
+    _access_hello: 'TRUE'
+hello.form:
+  path: '/hello-form'
+  defaults:
+    _title: 'Hello form'
+    _form: '\Drupal\hello\Form\HelloForm'
+  requirements:
+    _permission: 'access content'
+hello.admin_form:
+  path: '/admin/config/hello'
+  defaults:
+    _title: 'Hello admin form'
+    _form: '\Drupal\hello\Form\HelloAdminForm'
+  requirements:
+    _permission: 'access content'
